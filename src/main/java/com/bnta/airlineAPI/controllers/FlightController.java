@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("flights")
@@ -22,10 +23,10 @@ public class FlightController {
     public ResponseEntity<List<Flight>> getAllFlights(){
         return new ResponseEntity<>(flightService.getAllFlights(), HttpStatus.OK);
     }
-    
+
 //    GET localhost:8080/flights/1
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Flight> getFlightById(@PathVariable Long id){
-        return new ResponseEntity<>(flightService.getFlightById(id), HttpStatus.OK);
+    public ResponseEntity<Optional<Flight>> getFlightById(@PathVariable Long id){
+        return new ResponseEntity(flightService.getFlightById(id), HttpStatus.OK);
     }
 }

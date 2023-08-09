@@ -17,11 +17,11 @@ public class PassengerService {
     @Autowired
     FlightRepository flightRepository;
 
-    public List<Passenger> getAllPassengers(){
+    public List<Passenger> findAllPassengers(){
         return passengerRepository.findAll();
     }
 
-    public Passenger getPassengerById(Long id){
+    public Passenger findPassenger(Long id){
         return passengerRepository.findById(id).get();
     }
 
