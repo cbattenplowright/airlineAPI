@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "passengers")
@@ -21,13 +22,13 @@ public class Passenger {
     private String phoneNumber;
 
     @ManyToMany
-    @JsonIgnoreProperties() // TODO add the entity to ignore
+    @JsonIgnoreProperties("{passengersList}") // TODO add the entity to ignore
     @JoinTable(
             name = "passengers_flights",
             joinColumns = @JoinColumn(name = "passenger_id"),
             inverseJoinColumns = @JoinColumn(name = "flight_id")
     )
-    private List<Flights> flightsList;
+    private List<Flight> flightsList;
 
     public Passenger(String name, String phoneNumber) {
         this.name = name;
@@ -37,6 +38,7 @@ public class Passenger {
 
     public Passenger(){}
 
+//    Getters and Setters
     public Long getId() {
         return Id;
     }
@@ -61,11 +63,11 @@ public class Passenger {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<Flights> getFlightsList() {
+    public List<Flight> getFlightsList() {
         return flightsList;
     }
 
-    public void setFlightsList(List<Flights> flightsList) {
+    public void setFlightsList(List<Flight> flightsList) {
         this.flightsList = flightsList;
     }
 }
