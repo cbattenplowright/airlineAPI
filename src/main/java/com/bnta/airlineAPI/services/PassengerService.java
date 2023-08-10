@@ -9,6 +9,7 @@ import com.bnta.airlineAPI.repositories.PassengerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -28,11 +29,20 @@ public class PassengerService {
         return passengerRepository.findById(id).get();
     }
 
-// TODO Create a addPassenger method
-
     public Passenger addPassenger(PassengerDTO passengerDTO){
-        Passenger newPassenger = new Passenger(passengerDTO.getName(), passengerDTO.getPhoneNumber());
+        Passenger newPassenger = new Passenger(
+                passengerDTO.getName(),
+                passengerDTO.getPhoneNumber());
         return passengerRepository.save(newPassenger);
+    }
+
+    public Passenger addFlightToPassenger(PassengerDTO passengerDTO, Long passengerId){
+        Passenger passengerToUpdate = passengerRepository.findById(passengerId).get();
+        for (Long flightId : passengerDTO.getFlightIds()){
+            Flight flight = flightRepository.findById(flightId).get();
+            passengerToUpdate.addFlightToPassenger(flight);
+        }
+        return passengerToUpdate;
     }
 
 }

@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +24,9 @@ public class PassengerController {
     @Autowired
     PassengerService passengerService;
 
+    @Autowired
+    FlightService flightService;
+
 //    GET localhost:8080/passengers
 
     @GetMapping
@@ -30,7 +34,7 @@ public class PassengerController {
         return new ResponseEntity<>(passengerService.findAllPassengers(), HttpStatus.OK);
     }
 
-//    GET localhost:8080/passengers/id
+//    GET localhost:8080/passengers/:id
     @GetMapping(value = "/{id}")
     public ResponseEntity<Optional<Passenger>> getPassenger(@PathVariable Long id){
         return new ResponseEntity(passengerService.findPassenger(id), HttpStatus.OK);
@@ -40,6 +44,12 @@ public class PassengerController {
     @PostMapping
     public ResponseEntity<Passenger> addNewPassenger(@RequestBody PassengerDTO passengerDTO){
         return new ResponseEntity<>(passengerService.addPassenger(passengerDTO), HttpStatus.CREATED);
+    }
+
+//    PATCH localhost:8080/passengers/:id with request body
+    @PatchMapping(value = "/{id}")
+    public ResponseEntity<Passenger> addFlightToPassenger(@RequestBody PassengerDTO passengerDTO, @PathVariable Long id){
+        return new ResponseEntity<>(passengerService.addFlightToPassenger(passengerDTO, id), HttpStatus.OK);
     }
 
 }

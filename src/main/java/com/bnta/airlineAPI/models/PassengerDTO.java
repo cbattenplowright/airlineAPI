@@ -1,13 +1,18 @@
 package com.bnta.airlineAPI.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PassengerDTO {
 
     private String name;
     private String phoneNumber;
+    private List<Long> flightIds;
 
-    public PassengerDTO(String name, String phoneNumber){
+    public PassengerDTO(String name, String phoneNumber, List<Long> flightIds){
         this.name = name;
         this.phoneNumber = phoneNumber;
+        this.flightIds = flightIds;
     }
 
     public PassengerDTO(){}
@@ -26,5 +31,13 @@ public class PassengerDTO {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public List<Long> getFlightIds() {
+        return flightIds;
+    }
+
+    public void setFlightIds(List<Long> flightIds) {
+        this.flightIds = flightIds;
     }
 }

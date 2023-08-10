@@ -71,7 +71,7 @@ public class Passenger {
         this.flightsList = flightsList;
     }
 
-    public void addPassengerToFlight(Flight flight) {
+    public void addFlightToPassenger(Flight flight) {
         this.flightsList.add(flight); // adds the estate entity to the estates table
     }
 }

@@ -56,21 +56,21 @@ public class DataLoader implements ApplicationRunner {
         passengers.add(new Passenger("Maya Jackson", "07555555559"));
         passengers.add(new Passenger("Noah Williams", "07123456793"));
 
-        passengers.get(0).addPassengerToFlight(flights.get(1));
-        passengers.get(0).addPassengerToFlight(flights.get(5));
-        passengers.get(1).addPassengerToFlight(flights.get(8));
-        passengers.get(2).addPassengerToFlight(flights.get(3));
-        passengers.get(3).addPassengerToFlight(flights.get(7));
-        passengers.get(4).addPassengerToFlight(flights.get(1));
-        passengers.get(5).addPassengerToFlight(flights.get(4));
-        passengers.get(6).addPassengerToFlight(flights.get(2));
-        passengers.get(7).addPassengerToFlight(flights.get(9));
-        passengers.get(8).addPassengerToFlight(flights.get(6));
-        passengers.get(9).addPassengerToFlight(flights.get(9));
-        passengers.get(0).addPassengerToFlight(flights.get(2));
-        passengers.get(1).addPassengerToFlight(flights.get(2));
-        passengers.get(2).addPassengerToFlight(flights.get(2));
-        passengers.get(3).addPassengerToFlight(flights.get(2));
+        passengers.get(0).addFlightToPassenger(flights.get(1));
+        passengers.get(0).addFlightToPassenger(flights.get(5));
+        passengers.get(1).addFlightToPassenger(flights.get(8));
+        passengers.get(2).addFlightToPassenger(flights.get(3));
+        passengers.get(3).addFlightToPassenger(flights.get(7));
+        passengers.get(4).addFlightToPassenger(flights.get(1));
+        passengers.get(5).addFlightToPassenger(flights.get(4));
+        passengers.get(6).addFlightToPassenger(flights.get(2));
+        passengers.get(7).addFlightToPassenger(flights.get(9));
+        passengers.get(8).addFlightToPassenger(flights.get(6));
+        passengers.get(9).addFlightToPassenger(flights.get(9));
+        passengers.get(0).addFlightToPassenger(flights.get(2));
+        passengers.get(1).addFlightToPassenger(flights.get(2));
+        passengers.get(2).addFlightToPassenger(flights.get(2));
+        passengers.get(3).addFlightToPassenger(flights.get(2));
         passengerRepository.saveAll(passengers);
 
     }
