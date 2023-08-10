@@ -16,6 +16,8 @@ public class FlightDTO {
         this.departureTime = departureTime;
     }
 
+    public FlightDTO(){}
+
     public String getDestination() {
         return destination;
     }
