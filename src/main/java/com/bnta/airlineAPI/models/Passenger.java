@@ -22,7 +22,7 @@ public class Passenger {
     private String phoneNumber;
 
     @ManyToMany
-    @JsonIgnoreProperties("{passengersList}") // TODO add the entity to ignore
+    @JsonIgnoreProperties("passengersList")
     @JoinTable(
             name = "passengers_flights",
             joinColumns = @JoinColumn(name = "passenger_id"),
@@ -69,5 +69,9 @@ public class Passenger {
 
     public void setFlightsList(List<Flight> flightsList) {
         this.flightsList = flightsList;
+    }
+
+    public void addPassengerToFlight(Flight flight) {
+        this.flightsList.add(flight); // adds the estate entity to the estates table
     }
 }
