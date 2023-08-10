@@ -1,6 +1,7 @@
 package com.bnta.airlineAPI.controllers;
 
 import com.bnta.airlineAPI.models.Flight;
+import com.bnta.airlineAPI.models.FlightDTO;
 import com.bnta.airlineAPI.services.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,5 +29,10 @@ public class FlightController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<Optional<Flight>> getFlightById(@PathVariable Long id){
         return new ResponseEntity(flightService.getFlightById(id), HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<Flight> addNewFlight(@RequestBody FlightDTO flightDTO){
+        return new ResponseEntity<>(flightService.addFlight(flightDTO), HttpStatus.CREATED);
     }
 }
